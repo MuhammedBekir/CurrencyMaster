@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "506740279660",
+    "project_id": "currencymaster-1eb9b",
+    "storage_bucket": "currencymaster-1eb9b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:506740279660:android:c4043de5505cd6419acb49",
+        "android_client_info": {
+          "package_name": "bekir.app.currencymaster"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD73_Wds-z6cXEpbyzU2DqCaznwu2CS0f4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
