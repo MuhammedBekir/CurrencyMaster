@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">CurrencyMaster</string>
+    <string name="full_name">Full Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="by_creating_an_account_i_accept_privacy_policy_and_legal_terms">By creating an account. I accept Privacy Policy and Legal Terms.</string>
+    <string name="create_account">Create Account</string>
+    <string name="login">Login</string>
 </resources>
