@@ -1,7 +1,8 @@
-package bekir.app.currencymaster
+package bekir.app.currencymaster.ui.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import bekir.app.currencymaster.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
