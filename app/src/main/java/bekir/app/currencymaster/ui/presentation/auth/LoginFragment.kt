@@ -1,9 +1,7 @@
 package bekir.app.currencymaster.ui.presentation.auth
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,9 +14,8 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import bekir.app.currencymaster.R
 import bekir.app.currencymaster.data.source.AuthState
-import bekir.app.currencymaster.data.source.User
 import bekir.app.currencymaster.databinding.FragmentLoginBinding
-import bekir.app.currencymaster.ui.presentation.MainActivity
+import bekir.app.currencymaster.ui.presentation.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
