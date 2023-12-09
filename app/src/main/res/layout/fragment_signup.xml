@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
     <ImageView
         android:id="@+id/logo_img"
@@ -55,12 +56,13 @@
             android:hint="@string/confirm_password"
             android:inputType="textPassword" />
     </LinearLayout>
+
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:gravity="center"
         android:layout_marginTop="20dp"
+        android:gravity="center"
         android:text="@string/by_creating_an_account_i_accept_privacy_policy_and_legal_terms"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="@+id/edit_texts_layout"
@@ -76,7 +78,7 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/create_account_bg"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/txt"
+        app:layout_constraintBottom_toTopOf="@+id/already_have_an_account_txt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_max="350dp">
@@ -98,14 +100,14 @@
         app:layout_constraintTop_toTopOf="@+id/create_account_layout" />
 
     <TextView
-        android:id="@+id/txt"
+        android:id="@+id/already_have_an_account_txt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginBottom="10dp"
         android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
-        android:text="Already have an account? Login"
+        android:text="@string/already_have_an_account_login"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/create_account_layout"

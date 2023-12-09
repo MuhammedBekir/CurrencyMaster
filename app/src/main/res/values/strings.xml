@@ -7,4 +7,6 @@
     <string name="by_creating_an_account_i_accept_privacy_policy_and_legal_terms">By creating an account. I accept Privacy Policy and Legal Terms.</string>
     <string name="create_account">Create Account</string>
     <string name="login">Login</string>
+    <string name="already_have_an_account_login">Already have an account? Login</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
 </resources>
