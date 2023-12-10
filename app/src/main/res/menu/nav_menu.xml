@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_item1"
+        android:icon="@drawable/ic_currency"
+        android:title="@string/exchange_rates"
+        app:actionLayout="@layout/custom_navigation_item" />
+
+    <item
+        android:id="@+id/menu_item2"
+        android:icon="@drawable/ic_gold"
+        android:title="@string/gold_prices"
+        app:actionLayout="@layout/custom_navigation_item" />
+
+    <item
+        android:id="@+id/menu_item3"
+        android:icon="@drawable/ic_converter"
+        android:title="@string/converter"
+        app:actionLayout="@layout/custom_navigation_item" />
+</menu>
