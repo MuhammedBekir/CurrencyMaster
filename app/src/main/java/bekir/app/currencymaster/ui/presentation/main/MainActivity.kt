@@ -19,9 +19,10 @@ import androidx.lifecycle.repeatOnLifecycle
 import bekir.app.currencymaster.R
 import bekir.app.currencymaster.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: ActivityMainBinding
     private val viewModel by viewModels<MainViewModel>()

@@ -1,11 +1,9 @@
 package bekir.app.currencymaster.ui.presentation.auth
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import bekir.app.currencymaster.data.source.AuthState
-import bekir.app.currencymaster.data.source.User
+import bekir.app.currencymaster.data.source.models.AuthState
+import bekir.app.currencymaster.data.source.models.User
 import bekir.app.currencymaster.domain.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

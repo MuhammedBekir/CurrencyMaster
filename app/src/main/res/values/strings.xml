@@ -14,4 +14,5 @@
     <string name="exchange_rates">Exchange Rates</string>
     <string name="gold_prices">Gold Prices</string>
     <string name="converter">Converter</string>
+    <string name="usd">%1$s/USD</string>
 </resources>

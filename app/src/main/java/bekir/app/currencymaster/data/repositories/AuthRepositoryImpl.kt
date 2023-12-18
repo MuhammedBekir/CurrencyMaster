@@ -1,7 +1,7 @@
 package bekir.app.currencymaster.data.repositories
 
-import bekir.app.currencymaster.data.source.AuthState
-import bekir.app.currencymaster.data.source.User
+import bekir.app.currencymaster.data.source.models.AuthState
+import bekir.app.currencymaster.data.source.models.User
 import bekir.app.currencymaster.domain.AuthRepository
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.tasks.await

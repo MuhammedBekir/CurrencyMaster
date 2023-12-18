@@ -13,7 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import bekir.app.currencymaster.R
-import bekir.app.currencymaster.data.source.AuthState
+import bekir.app.currencymaster.data.source.models.AuthState
 import bekir.app.currencymaster.databinding.FragmentLoginBinding
 import bekir.app.currencymaster.ui.presentation.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
