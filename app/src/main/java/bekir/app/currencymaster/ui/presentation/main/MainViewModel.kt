@@ -3,6 +3,8 @@ package bekir.app.currencymaster.ui.presentation.main
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import bekir.app.currencymaster.data.source.models.currency_response.ConversionRates
+import bekir.app.currencymaster.data.source.models.currency_response.CurrencyResponse
 import bekir.app.currencymaster.domain.CurrencyRepository
 import bekir.app.currencymaster.ui.presentation.main.items.MainScreenItem
 import bekir.app.currencymaster.ui.presentation.main.items.TopCurrenciesItem
@@ -31,53 +33,137 @@ class MainViewModel @Inject constructor(
 
 
     init {
-        getCurrencies()
+//        getCurrencies()
     }
 
     private fun getCurrencies() {
         viewModelScope.launch(Dispatchers.IO) {
-            val currencyRepository = repository.getCurrencies()
-            val conversionRates = currencyRepository.conversionRates
+            val currencyResponse = repository.getCurrencies()
 
-            val currencyItems = conversionRates.let {
-                listOf(
-                    MainScreenItem("TRY", it.TRY, currencyRepository.timeLastUpdateUnix.toLong()),
-                    MainScreenItem("EUR", it.EUR, currencyRepository.timeLastUpdateUnix.toLong()),
-                    MainScreenItem("AED", it.AED, currencyRepository.timeLastUpdateUnix.toLong()),
-                    MainScreenItem("GBP", it.GBP, currencyRepository.timeLastUpdateUnix.toLong()),
-                    MainScreenItem("EGP", it.EGP, currencyRepository.timeLastUpdateUnix.toLong()),
-                    MainScreenItem("AUD", it.AUD, currencyRepository.timeLastUpdateUnix.toLong()),
-                    MainScreenItem("SEK", it.SEK, currencyRepository.timeLastUpdateUnix.toLong()),
-                    MainScreenItem("JPY", it.JPY, currencyRepository.timeLastUpdateUnix.toLong()),
-                    MainScreenItem("CAD", it.CAD, currencyRepository.timeLastUpdateUnix.toLong()),
-                    MainScreenItem("QAR", it.QAR, currencyRepository.timeLastUpdateUnix.toLong()),
-                    MainScreenItem("SHP", it.SHP, currencyRepository.timeLastUpdateUnix.toLong()),
-                    MainScreenItem("XDR", it.XDR, currencyRepository.timeLastUpdateUnix.toLong()),
-                    MainScreenItem("MRU", it.MRU, currencyRepository.timeLastUpdateUnix.toLong()),
-                    MainScreenItem("OMR", it.OMR, currencyRepository.timeLastUpdateUnix.toLong()),
-                    MainScreenItem("GIP", it.GIP, currencyRepository.timeLastUpdateUnix.toLong()),
-                    MainScreenItem("CHF", it.CHF, currencyRepository.timeLastUpdateUnix.toLong()),
-                    MainScreenItem("COP", it.COP, currencyRepository.timeLastUpdateUnix.toLong()),
-                    MainScreenItem("BDT", it.BDT, currencyRepository.timeLastUpdateUnix.toLong()),
-                    MainScreenItem("PKR", it.PKR, currencyRepository.timeLastUpdateUnix.toLong()),
-                    MainScreenItem("ZWL", it.ZWL, currencyRepository.timeLastUpdateUnix.toLong()),
-                )
-            }
-            val topCurrenciesItem = conversionRates.let {
-                listOf(
-                    TopCurrenciesItem("TRY", it.TRY),
-                    TopCurrenciesItem("EUR", it.EUR),
-                    TopCurrenciesItem("AED", it.AED),
-                    TopCurrenciesItem("EGP", it.EGP),
-                    TopCurrenciesItem("QAR", it.QAR)
-                    )
-            }
+            val currencyItems = prepareCurrencyItems(currencyResponse)
+            val topCurrenciesItem = prepareTopCurrencyItems(currencyResponse)
+
             _topCurrenciesStateFLow.emit(topCurrenciesItem)
             _currenciesStateFLow.emit(currencyItems)
 
 
         }
 
+    }
+
+    private fun prepareCurrencyItems(currencyResponse: CurrencyResponse): List<MainScreenItem> {
+        return listOf(
+            MainScreenItem(
+                "TRY",
+                currencyResponse.conversionRates.TRY,
+                currencyResponse.timeLastUpdateUnix.toLong()
+            ),
+            MainScreenItem(
+                "EUR",
+                currencyResponse.conversionRates.EUR,
+                currencyResponse.timeLastUpdateUnix.toLong()
+            ),
+            MainScreenItem(
+                "AED",
+                currencyResponse.conversionRates.AED,
+                currencyResponse.timeLastUpdateUnix.toLong()
+            ),
+            MainScreenItem(
+                "GBP",
+                currencyResponse.conversionRates.GBP,
+                currencyResponse.timeLastUpdateUnix.toLong()
+            ),
+            MainScreenItem(
+                "EGP",
+                currencyResponse.conversionRates.EGP,
+                currencyResponse.timeLastUpdateUnix.toLong()
+            ),
+            MainScreenItem(
+                "AUD",
+                currencyResponse.conversionRates.AUD,
+                currencyResponse.timeLastUpdateUnix.toLong()
+            ),
+            MainScreenItem(
+                "SEK",
+                currencyResponse.conversionRates.SEK,
+                currencyResponse.timeLastUpdateUnix.toLong()
+            ),
+            MainScreenItem(
+                "JPY",
+                currencyResponse.conversionRates.JPY,
+                currencyResponse.timeLastUpdateUnix.toLong()
+            ),
+            MainScreenItem(
+                "CAD",
+                currencyResponse.conversionRates.CAD,
+                currencyResponse.timeLastUpdateUnix.toLong()
+            ),
+            MainScreenItem(
+                "QAR",
+                currencyResponse.conversionRates.QAR,
+                currencyResponse.timeLastUpdateUnix.toLong()
+            ),
+            MainScreenItem(
+                "SHP",
+                currencyResponse.conversionRates.SHP,
+                currencyResponse.timeLastUpdateUnix.toLong()
+            ),
+            MainScreenItem(
+                "XDR",
+                currencyResponse.conversionRates.XDR,
+                currencyResponse.timeLastUpdateUnix.toLong()
+            ),
+            MainScreenItem(
+                "MRU",
+                currencyResponse.conversionRates.MRU,
+                currencyResponse.timeLastUpdateUnix.toLong()
+            ),
+            MainScreenItem(
+                "OMR",
+                currencyResponse.conversionRates.OMR,
+                currencyResponse.timeLastUpdateUnix.toLong()
+            ),
+            MainScreenItem(
+                "GIP",
+                currencyResponse.conversionRates.GIP,
+                currencyResponse.timeLastUpdateUnix.toLong()
+            ),
+            MainScreenItem(
+                "CHF",
+                currencyResponse.conversionRates.CHF,
+                currencyResponse.timeLastUpdateUnix.toLong()
+            ),
+            MainScreenItem(
+                "COP",
+                currencyResponse.conversionRates.COP,
+                currencyResponse.timeLastUpdateUnix.toLong()
+            ),
+            MainScreenItem(
+                "BDT",
+                currencyResponse.conversionRates.BDT,
+                currencyResponse.timeLastUpdateUnix.toLong()
+            ),
+            MainScreenItem(
+                "PKR",
+                currencyResponse.conversionRates.PKR,
+                currencyResponse.timeLastUpdateUnix.toLong()
+            ),
+            MainScreenItem(
+                "ZWL",
+                currencyResponse.conversionRates.ZWL,
+                currencyResponse.timeLastUpdateUnix.toLong()
+            ),
+        )
+    }
+
+    private fun prepareTopCurrencyItems(currencyResponse: CurrencyResponse): List<TopCurrenciesItem> {
+        return listOf(
+            TopCurrenciesItem("TRY", currencyResponse.conversionRates.TRY),
+            TopCurrenciesItem("EUR", currencyResponse.conversionRates.EUR),
+            TopCurrenciesItem("AED", currencyResponse.conversionRates.AED),
+            TopCurrenciesItem("EGP", currencyResponse.conversionRates.EGP),
+            TopCurrenciesItem("QAR", currencyResponse.conversionRates.QAR)
+        )
     }
 
     fun changeScreen(screen: Screens) {
