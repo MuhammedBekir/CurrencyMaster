@@ -3,7 +3,6 @@ package bekir.app.currencymaster.ui.presentation.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -22,6 +21,7 @@ import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: ActivityMainBinding
@@ -85,15 +85,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun changeButtonsColor(screen: Screens) {
-        val coversColor = ContextCompat.getColor(
+        val currencyColor = ContextCompat.getColor(
             this,
             if (screen == Screens.CurrencyFragment) R.color.blue else R.color.grey
         )
-        val voicesColor = ContextCompat.getColor(
+        val goldColor = ContextCompat.getColor(
             this,
             if (screen == Screens.GoldFragment) R.color.blue else R.color.grey
         )
-        val settingsColor = ContextCompat.getColor(
+        val converterColor = ContextCompat.getColor(
             this,
             if (screen == Screens.ConverterFragment) R.color.blue else R.color.grey
         )
@@ -101,29 +101,33 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         DrawableCompat.setTint(
             DrawableCompat.wrap(binding.currencyImg.drawable),
-            coversColor
+            currencyColor
         )
         DrawableCompat.setTint(
             DrawableCompat.wrap(binding.goldImg.drawable),
-            voicesColor
+            goldColor
         )
         DrawableCompat.setTint(
             DrawableCompat.wrap(binding.converterImg.drawable),
-            settingsColor
+            converterColor
         )
-        binding.currencyTxt.setTextColor(coversColor)
-        binding.goldTxt.setTextColor(voicesColor)
-        binding.converterTxt.setTextColor(settingsColor)
+        binding.currencyTxt.setTextColor(currencyColor)
+        binding.goldTxt.setTextColor(goldColor)
+        binding.converterTxt.setTextColor(converterColor)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_item1 -> {
-                showToast("Item 1 clicked")
+                viewModel.changeScreen(Screens.CurrencyFragment)
             }
 
             R.id.menu_item2 -> {
-                showToast("Item 2 clicked")
+                viewModel.changeScreen(Screens.GoldFragment)
+            }
+
+            R.id.menu_item3 -> {
+                viewModel.changeScreen(Screens.ConverterFragment)
             }
         }
 
