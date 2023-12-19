@@ -19,4 +19,9 @@
         android:icon="@drawable/ic_converter"
         android:title="@string/converter"
         app:actionLayout="@layout/custom_navigation_item" />
+    <item
+        android:id="@+id/menu_item4"
+        android:icon="@drawable/ic_converter"
+        android:title="@string/sign_out"
+        app:actionLayout="@layout/custom_navigation_item" />
 </menu>

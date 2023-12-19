@@ -2,6 +2,8 @@ package bekir.app.currencymaster.data.di
 
 import bekir.app.currencymaster.Config.CURRENCY_BASE_URL
 import bekir.app.currencymaster.data.api.CurrencyAPI
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -47,4 +49,11 @@ object APIModule {
             .writeTimeout(5, TimeUnit.MINUTES)
             .build()
     }
+    @Singleton
+    @Provides
+    fun provideFirebaseAuth() = FirebaseAuth.getInstance()
+
+    @Singleton
+    @Provides
+    fun provideFirebaseDatabase() = FirebaseDatabase.getInstance().reference
 }

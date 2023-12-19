@@ -15,4 +15,5 @@
     <string name="gold_prices">Gold Prices</string>
     <string name="converter">Converter</string>
     <string name="usd">%1$s/USD</string>
+    <string name="sign_out">Sign Out</string>
 </resources>

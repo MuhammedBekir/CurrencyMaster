@@ -1,15 +1,20 @@
 package bekir.app.currencymaster.ui.presentation.main
 
+import android.content.ContentValues.TAG
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.GravityCompat
+import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Lifecycle
@@ -17,6 +22,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import bekir.app.currencymaster.R
 import bekir.app.currencymaster.databinding.ActivityMainBinding
+import bekir.app.currencymaster.ui.presentation.auth.AuthActivity
 import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -32,6 +38,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        observeValues()
+        initDrawerAndActionBar()
+        initClickListeners()
+
+
+    }
+
+    private fun observeValues() {
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.currentScreen.collectLatest {
@@ -47,7 +61,30 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
             }
         }
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.isUserSignedIn.collectLatest { isSignedIn ->
+                    val navHeaderBinding = binding.navigationView.getHeaderView(0)
+                    val loginLayout = navHeaderBinding.findViewById<LinearLayout>(R.id.login_layout)
+                        .apply { isVisible = !isSignedIn }
+                    navHeaderBinding.findViewById<TextView>(R.id.username_txt)
+                        .apply {
+                            isVisible = isSignedIn
+                            val email = viewModel.firebaseAuth.currentUser?.email
+                            text = email
+                        }
+                    loginLayout.setOnClickListener {
+                        if (!isSignedIn) {
+                            val intent = Intent(this@MainActivity, AuthActivity::class.java)
+                            startActivity(intent)
+                        }
+                    }
+                }
+            }
+        }
+    }
 
+    private fun initClickListeners() {
         binding.drawerImg.setOnClickListener {
             if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                 drawerLayout.closeDrawer(GravityCompat.START)
@@ -64,6 +101,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding.converterImg.setOnClickListener {
             viewModel.changeScreen(Screens.ConverterFragment)
         }
+    }
+
+    private fun initDrawerAndActionBar() {
         drawerLayout = binding.drawerLayout
         toggle = ActionBarDrawerToggle(
             this,
@@ -77,6 +117,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val navHeaderBinding = binding.navigationView.getHeaderView(0)
         val loginLayout = navHeaderBinding.findViewById<LinearLayout>(R.id.login_layout)
+        val loginLayout2 = navHeaderBinding.findViewById<LinearLayout>(R.id.menu_item4)
         loginLayout.setOnClickListener {
             showToast("Login Layout Clicked")
         }
@@ -128,6 +169,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             R.id.menu_item3 -> {
                 viewModel.changeScreen(Screens.ConverterFragment)
+            }
+
+            R.id.menu_item4 -> {
+                if (viewModel.isUserSignedIn.value) {
+                    Intent(this@MainActivity, AuthActivity::class.java)
+                    finish()
+                } else{}
             }
         }
 

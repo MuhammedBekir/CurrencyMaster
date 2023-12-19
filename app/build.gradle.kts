@@ -58,13 +58,10 @@ dependencies {
     implementation ("androidx.hilt:hilt-common:1.1.0")
     implementation ("androidx.work:work-runtime-ktx:2.9.0")
     implementation("androidx.databinding:databinding-runtime:8.2.0")
+    implementation("com.google.firebase:firebase-database:20.3.0")
     kapt ("com.google.dagger:hilt-compiler:2.48.1")
     kapt ("com.google.dagger:dagger-android-processor:2.48.1")
 
-
-    // Groupie
-//    implementation ("com.github.lisawray.groupie:groupie:2.10.1")
-//    implementation ("com.github.lisawray.groupie:groupie-databinding:2.10.1")
 
     // Groupie
     val groupieVersion = "2.10.1"

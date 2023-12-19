@@ -8,6 +8,7 @@ import bekir.app.currencymaster.data.source.models.currency_response.CurrencyRes
 import bekir.app.currencymaster.domain.CurrencyRepository
 import bekir.app.currencymaster.ui.presentation.main.items.MainScreenItem
 import bekir.app.currencymaster.ui.presentation.main.items.TopCurrenciesItem
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,7 +21,8 @@ import com.xwray.groupie.Group
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val repository: CurrencyRepository
+    private val repository: CurrencyRepository,
+    val firebaseAuth: FirebaseAuth
 ) : ViewModel() {
     private val _currentScreen = MutableStateFlow<Screens>(Screens.CurrencyFragment)
     val currentScreen = _currentScreen.asStateFlow()
@@ -31,8 +33,11 @@ class MainViewModel @Inject constructor(
     private val _topCurrenciesStateFLow = MutableStateFlow<List<Group>>(listOf())
     val topCurrenciesStateFLow = _topCurrenciesStateFLow.asStateFlow()
 
+    private val _isUserSignedIn = MutableStateFlow(false)
+    val isUserSignedIn = _isUserSignedIn.asStateFlow()
 
     init {
+        _isUserSignedIn.value = firebaseAuth.currentUser != null
 //        getCurrencies()
     }
 
