@@ -16,4 +16,5 @@
     <string name="converter">Converter</string>
     <string name="usd">%1$s/USD</string>
     <string name="sign_out">Sign Out</string>
+    <string name="base_to_currency">%1$s%2$s</string>
 </resources>

@@ -9,6 +9,7 @@ import java.util.Date
 import java.util.Locale
 
 class MainScreenItem(
+    private val baseCode: String,
     private val currencyCode: String,
     private val currencyValue: Double,
     private val date: Long
@@ -18,7 +19,7 @@ class MainScreenItem(
     override fun bind(viewBinding: CurrencyExchangeItemBinding, position: Int) {
 
         viewBinding.lastUpdateDateTxt.text = getFormattedDate()
-        viewBinding.fromToText.text = viewBinding.root.context.getString(R.string.usd, currencyCode)
+        viewBinding.fromToText.text = viewBinding.root.context.getString(R.string.base_to_currency, baseCode, currencyCode)
         viewBinding.buyValueTxt.text = currencyValue.toString()
         viewBinding.sellValueTxt.text = getSellValue()
     }
