@@ -1,4 +1,4 @@
-package bekir.app.currencymaster.ui.presentation.main
+package bekir.app.currencymaster.ui.presentation.main.gold
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import bekir.app.currencymaster.R
-import bekir.app.currencymaster.databinding.FragmentCurrencyBinding
 import bekir.app.currencymaster.databinding.FragmentGoldBinding
+import bekir.app.currencymaster.ui.presentation.main.MainViewModel
+import bekir.app.currencymaster.ui.presentation.main.currency.collectLatestWhenStarted
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
 

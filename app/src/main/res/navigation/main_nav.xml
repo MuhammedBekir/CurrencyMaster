@@ -6,14 +6,14 @@
 
     <fragment
         android:id="@+id/currencyFragment"
-        android:name="bekir.app.currencymaster.ui.presentation.main.CurrencyFragment"
+        android:name="bekir.app.currencymaster.ui.presentation.main.currency.CurrencyFragment"
         android:label="CurrencyFragment" />
     <fragment
         android:id="@+id/goldFragment"
-        android:name="bekir.app.currencymaster.ui.presentation.main.GoldFragment"
+        android:name="bekir.app.currencymaster.ui.presentation.main.gold.GoldFragment"
         android:label="GoldFragment" />
     <fragment
         android:id="@+id/converterFragment"
-        android:name="bekir.app.currencymaster.ui.presentation.main.ConverterFragment"
+        android:name="bekir.app.currencymaster.ui.presentation.main.convert.ConverterFragment"
         android:label="ConverterFragment" />
 </navigation>

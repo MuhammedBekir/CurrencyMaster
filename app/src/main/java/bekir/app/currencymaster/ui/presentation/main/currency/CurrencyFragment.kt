@@ -1,4 +1,4 @@
-package bekir.app.currencymaster.ui.presentation.main
+package bekir.app.currencymaster.ui.presentation.main.currency
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import bekir.app.currencymaster.R
 import bekir.app.currencymaster.databinding.FragmentCurrencyBinding
+import bekir.app.currencymaster.ui.presentation.main.MainViewModel
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
 import kotlinx.coroutines.Dispatchers

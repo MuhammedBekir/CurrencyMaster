@@ -3,9 +3,11 @@ package bekir.app.currencymaster.ui.presentation.main
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import bekir.app.currencymaster.data.source.models.currency_response.ConversionRates
 import bekir.app.currencymaster.data.source.models.currency_response.CurrencyResponse
 import bekir.app.currencymaster.domain.CurrencyRepository
+import bekir.app.currencymaster.ui.presentation.main.convert.ConverterFragment
+import bekir.app.currencymaster.ui.presentation.main.currency.CurrencyFragment
+import bekir.app.currencymaster.ui.presentation.main.gold.GoldFragment
 import bekir.app.currencymaster.ui.presentation.main.items.MainScreenItem
 import bekir.app.currencymaster.ui.presentation.main.items.TopCurrenciesItem
 import com.google.firebase.auth.FirebaseAuth

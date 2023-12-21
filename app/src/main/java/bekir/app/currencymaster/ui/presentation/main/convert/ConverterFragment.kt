@@ -1,4 +1,4 @@
-package bekir.app.currencymaster.ui.presentation.main
+package bekir.app.currencymaster.ui.presentation.main.convert
 
 import androidx.fragment.app.Fragment
 import bekir.app.currencymaster.R
