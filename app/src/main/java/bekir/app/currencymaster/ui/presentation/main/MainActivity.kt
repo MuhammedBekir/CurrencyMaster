@@ -42,7 +42,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         initDrawerAndActionBar()
         initClickListeners()
 
-
     }
 
     private fun observeValues() {
