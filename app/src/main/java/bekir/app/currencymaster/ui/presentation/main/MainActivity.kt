@@ -173,9 +173,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             R.id.menu_item4 -> {
                 if (viewModel.isUserSignedIn.value) {
+                    viewModel.firebaseAuth.signOut()
                     Intent(this@MainActivity, AuthActivity::class.java)
                     finish()
-                } else{}
+                } else {
+                    showToast("you're not logged in")
+                }
             }
         }
 

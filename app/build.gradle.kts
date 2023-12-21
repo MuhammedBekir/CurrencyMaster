@@ -68,9 +68,9 @@ dependencies {
     implementation ("com.github.lisawray.groupie:groupie:$groupieVersion")
     implementation ("com.github.lisawray.groupie:groupie-viewbinding:$groupieVersion")
     //Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
-    implementation ("androidx.navigation:navigation-dynamic-features-fragment:2.7.5")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
+    implementation ("androidx.navigation:navigation-dynamic-features-fragment:2.7.6")
 
 
     // kotlin coroutines
