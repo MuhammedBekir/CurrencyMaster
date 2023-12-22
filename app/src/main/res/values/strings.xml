@@ -19,4 +19,5 @@
     <string name="base_to_currency">%1$s%2$s</string>
     <string name="usd_us_dollar">USD \nUS Dollar</string>
     <string name="try_turkish_lira">TRY \nTurkish Lira</string>
+    <string name="fom_to">%1$s \n%2$s</string>
 </resources>

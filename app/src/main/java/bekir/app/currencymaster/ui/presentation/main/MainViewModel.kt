@@ -93,88 +93,29 @@ class MainViewModel @Inject constructor(
 
     //gold items
     private fun prepareGoldItems(currencyResponse: CurrencyResponse): List<MainScreenItem> {
-        return listOf(
-            MainScreenItem(
-                "GOLD",
-                "TRY",
-                currencyResponse.conversionRates.TRY,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "XAU",
-                "USD",
-                currencyResponse.conversionRates.EUR,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "USD",
-                "KG",
-                currencyResponse.conversionRates.AED,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "EUR",
-                "KG",
-                currencyResponse.conversionRates.GBP,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "GRAM",
-                "GOLD",
-                currencyResponse.conversionRates.EGP,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "GOLD",
-                "SILVER",
-                currencyResponse.conversionRates.AUD,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "YENI",
-                "YARIM",
-                currencyResponse.conversionRates.SEK,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "ESKI",
-                "YARIM",
-                currencyResponse.conversionRates.JPY,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "YENI",
-                "TAM",
-                currencyResponse.conversionRates.CAD,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "YENI",
-                "ATA",
-                currencyResponse.conversionRates.QAR,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "YENI",
-                "ATA5",
-                currencyResponse.conversionRates.SHP,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "SILVER",
-                "TL",
-                currencyResponse.conversionRates.XDR,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "PLATINUM",
-                "USD",
-                currencyResponse.conversionRates.PKR,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            )
+        val currencyRates = currencyResponse.conversionRates
+
+        val goldItemMappings = listOf(
+            Triple("GOLD", "TRY", currencyRates.TRY),
+            Triple("XAU", "USD", currencyRates.EUR),
+            Triple("USD", "KG", currencyRates.AED),
+            Triple("EUR", "KG", currencyRates.GBP),
+            Triple("GRAM", "GOLD", currencyRates.EGP),
+            Triple("GOLD", "SILVER", currencyRates.AUD),
+            Triple("YENI", "YARIM", currencyRates.SEK),
+            Triple("ESKI", "YARIM", currencyRates.JPY),
+            Triple("YENI", "TAM", currencyRates.CAD),
+            Triple("YENI", "ATA", currencyRates.QAR),
+            Triple("YENI", "ATA5", currencyRates.SHP),
+            Triple("SILVER", "TL", currencyRates.XDR),
+            Triple("PLATINUM", "USD", currencyRates.PKR)
         )
 
+        return goldItemMappings.map { (from, to, rate) ->
+            MainScreenItem(from, to, rate, currencyResponse.timeLastUpdateUnix.toLong())
+        }
     }
+
 
 
     fun changeScreen(screen: Screens) {

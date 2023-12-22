@@ -19,7 +19,7 @@ class MainScreenItem(
     override fun bind(viewBinding: CurrencyExchangeItemBinding, position: Int) {
 
         viewBinding.lastUpdateDateTxt.text = getFormattedDate()
-        viewBinding.fromToText.text = viewBinding.root.context.getString(R.string.base_to_currency, baseCode, currencyCode)
+        viewBinding.fromToText.text = viewBinding.root.context.getString(R.string.fom_to, baseCode, currencyCode)
         viewBinding.buyValueTxt.text = currencyValue.toString()
         viewBinding.sellValueTxt.text = getSellValue()
     }
