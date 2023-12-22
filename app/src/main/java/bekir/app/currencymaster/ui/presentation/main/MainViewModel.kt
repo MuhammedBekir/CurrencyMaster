@@ -55,7 +55,7 @@ class MainViewModel @Inject constructor(
             val currencyResponse = repository.getCurrencies()
             usdToTlExchangeRate = currencyResponse.conversionRates.TRY
             val currencyItems = prepareCurrencyItems(currencyResponse)
-            val topCurrenciesItem = prepareTopCurrencyItems(currencyResponse)
+            val topCurrenciesItem = prepareTopCurrencies(currencyResponse)
             val goldItems = prepareGoldItems(currencyResponse)
             _topCurrenciesStateFLow.emit(topCurrenciesItem)
             _currenciesStateFLow.emit(currencyItems)
@@ -67,139 +67,28 @@ class MainViewModel @Inject constructor(
 
     //currencies items
     private fun prepareCurrencyItems(currencyResponse: CurrencyResponse): List<MainScreenItem> {
-        return listOf(
+        return currencyResponse.conversionRates.javaClass.declaredFields.map { field ->
+            field.isAccessible = true
             MainScreenItem(
                 "USD",
-                "TRY",
-                currencyResponse.conversionRates.TRY,
+                field.name,
+                field.get(currencyResponse.conversionRates) as Double,
                 currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "USD",
-                "EUR",
-                currencyResponse.conversionRates.EUR,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "USD",
-                "AED",
-                currencyResponse.conversionRates.AED,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "USD",
-                "GBP",
-                currencyResponse.conversionRates.GBP,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "USD",
-                "EGP",
-                currencyResponse.conversionRates.EGP,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "USD",
-                "AUD",
-                currencyResponse.conversionRates.AUD,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "USD",
-                "SEK",
-                currencyResponse.conversionRates.SEK,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "USD",
-                "JPY",
-                currencyResponse.conversionRates.JPY,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "USD",
-                "CAD",
-                currencyResponse.conversionRates.CAD,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "USD",
-                "QAR",
-                currencyResponse.conversionRates.QAR,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "USD",
-                "SHP",
-                currencyResponse.conversionRates.SHP,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "USD",
-                "XDR",
-                currencyResponse.conversionRates.XDR,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "USD",
-                "MRU",
-                currencyResponse.conversionRates.MRU,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "USD",
-                "OMR",
-                currencyResponse.conversionRates.OMR,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "USD",
-                "GIP",
-                currencyResponse.conversionRates.GIP,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "USD",
-                "CHF",
-                currencyResponse.conversionRates.CHF,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "USD",
-                "COP",
-                currencyResponse.conversionRates.COP,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "USD",
-                "BDT",
-                currencyResponse.conversionRates.BDT,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "USD",
-                "PKR",
-                currencyResponse.conversionRates.PKR,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-            MainScreenItem(
-                "USD",
-                "ZWL",
-                currencyResponse.conversionRates.ZWL,
-                currencyResponse.timeLastUpdateUnix.toLong()
-            ),
-        )
+            )
+        }
     }
 
+
     //top currencies items
-    private fun prepareTopCurrencyItems(currencyResponse: CurrencyResponse): List<TopCurrenciesItem> {
-        return listOf(
-            TopCurrenciesItem("TRY", currencyResponse.conversionRates.TRY),
-            TopCurrenciesItem("EUR", currencyResponse.conversionRates.EUR),
-            TopCurrenciesItem("AED", currencyResponse.conversionRates.AED),
-            TopCurrenciesItem("EGP", currencyResponse.conversionRates.EGP),
-            TopCurrenciesItem("QAR", currencyResponse.conversionRates.QAR)
-        )
+    private fun prepareTopCurrencies(currencyResponse: CurrencyResponse): List<TopCurrenciesItem> {
+        val currencyRates = currencyResponse.conversionRates
+
+        return listOf("TRY", "EUR", "AED", "EGP", "QAR").map { currencyCode ->
+            val field = currencyRates.javaClass.getDeclaredField(currencyCode)
+            field.isAccessible = true
+            val rate = field.get(currencyRates) as Double
+            TopCurrenciesItem(currencyCode, rate)
+        }
     }
 
     //gold items
@@ -284,6 +173,7 @@ class MainViewModel @Inject constructor(
                 currencyResponse.timeLastUpdateUnix.toLong()
             )
         )
+
     }
 
 
