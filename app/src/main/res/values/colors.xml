@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#17009A</color>
     <color name="grey">@android:color/darker_gray</color>
+    <color name="green">#00FF0D</color>
 </resources>

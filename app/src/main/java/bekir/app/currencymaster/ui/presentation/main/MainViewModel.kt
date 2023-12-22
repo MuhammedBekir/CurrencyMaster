@@ -42,15 +42,18 @@ class MainViewModel @Inject constructor(
     private val _isUserSignedIn = MutableStateFlow(false)
     val isUserSignedIn = _isUserSignedIn.asStateFlow()
 
+    var usdToTlExchangeRate: Double = 0.0
+
     init {
         _isUserSignedIn.value = firebaseAuth.currentUser != null
-//        getCurrencies()
+        getCurrencies()
     }
+
 
     private fun getCurrencies() {
         viewModelScope.launch(Dispatchers.IO) {
             val currencyResponse = repository.getCurrencies()
-
+            usdToTlExchangeRate = currencyResponse.conversionRates.TRY
             val currencyItems = prepareCurrencyItems(currencyResponse)
             val topCurrenciesItem = prepareTopCurrencyItems(currencyResponse)
             val goldItems = prepareGoldItems(currencyResponse)
@@ -288,6 +291,7 @@ class MainViewModel @Inject constructor(
         if (_currentScreen.value != screen)
             _currentScreen.value = screen
     }
+
 
 }
 
