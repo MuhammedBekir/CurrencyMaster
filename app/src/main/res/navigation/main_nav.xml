@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
     app:startDestination="@id/currencyFragment">
 
     <fragment
         android:id="@+id/currencyFragment"
+        tools:layout="@layout/fragment_currency"
         android:name="bekir.app.currencymaster.ui.presentation.main.currency.CurrencyFragment"
         android:label="CurrencyFragment" />
     <fragment
+        tools:layout="@layout/fragment_gold"
         android:id="@+id/goldFragment"
         android:name="bekir.app.currencymaster.ui.presentation.main.gold.GoldFragment"
         android:label="GoldFragment" />
     <fragment
+        tools:layout="@layout/fragment_converter"
         android:id="@+id/converterFragment"
         android:name="bekir.app.currencymaster.ui.presentation.main.convert.ConverterFragment"
         android:label="ConverterFragment" />

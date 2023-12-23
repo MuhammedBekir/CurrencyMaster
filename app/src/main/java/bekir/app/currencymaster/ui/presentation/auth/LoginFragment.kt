@@ -42,7 +42,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
         binding.signupTxt.setOnClickListener {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSignupFragment())
-
         }
 
         viewLifecycleOwner.lifecycleScope.launch {

@@ -1,10 +1,8 @@
 package bekir.app.currencymaster.ui.presentation.main
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -76,6 +74,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         if (!isSignedIn) {
                             val intent = Intent(this@MainActivity, AuthActivity::class.java)
                             startActivity(intent)
+                            finish()
                         }
                     }
                 }
@@ -114,12 +113,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val navHeaderBinding = binding.navigationView.getHeaderView(0)
-        val loginLayout = navHeaderBinding.findViewById<LinearLayout>(R.id.login_layout)
-        val loginLayout2 = navHeaderBinding.findViewById<LinearLayout>(R.id.menu_item4)
-        loginLayout.setOnClickListener {
-            showToast("Login Layout Clicked")
-        }
         val navigationView: NavigationView = binding.navigationView
         navigationView.setNavigationItemSelectedListener(this)
     }
@@ -173,7 +166,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.menu_item4 -> {
                 if (viewModel.isUserSignedIn.value) {
                     viewModel.firebaseAuth.signOut()
-                    Intent(this@MainActivity, AuthActivity::class.java)
+                    val intent = Intent(this, AuthActivity::class.java)
+                    startActivity(intent)
                     finish()
                 } else {
                     showToast("you're not logged in")
