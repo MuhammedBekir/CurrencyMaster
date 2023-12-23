@@ -77,7 +77,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.1")
 
-
+    //lottie animation
+    implementation ("com.airbnb.android:lottie:6.2.0")
 
     // Retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")

@@ -5,7 +5,6 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,9 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import bekir.app.currencymaster.R
 import bekir.app.currencymaster.databinding.FragmentConverterBinding
-import bekir.app.currencymaster.databinding.FragmentGoldBinding
 import bekir.app.currencymaster.ui.presentation.main.MainViewModel
-import bekir.app.currencymaster.ui.presentation.main.currency.collectLatestWhenStarted
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

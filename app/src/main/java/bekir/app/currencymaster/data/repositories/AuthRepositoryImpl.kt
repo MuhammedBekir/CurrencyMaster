@@ -1,13 +1,9 @@
 package bekir.app.currencymaster.data.repositories
 
-import android.content.ContentValues.TAG
-import android.util.Log
-import bekir.app.currencymaster.data.source.models.AuthState
 import bekir.app.currencymaster.data.source.models.User
+import bekir.app.currencymaster.data.utils.AuthState
 import bekir.app.currencymaster.domain.AuthRepository
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 

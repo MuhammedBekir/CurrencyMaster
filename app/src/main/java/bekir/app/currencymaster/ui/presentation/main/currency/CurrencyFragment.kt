@@ -6,18 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.flowWithLifecycle
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import bekir.app.currencymaster.R
 import bekir.app.currencymaster.databinding.FragmentCurrencyBinding
 import bekir.app.currencymaster.ui.presentation.main.MainViewModel
+import bekir.app.currencymaster.ui.utils.FragmentExtensions.collectLatestWhenStarted
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 class CurrencyFragment : Fragment(R.layout.fragment_currency) {
     private var _binding: FragmentCurrencyBinding? = null
@@ -80,12 +75,5 @@ class CurrencyFragment : Fragment(R.layout.fragment_currency) {
             topScreenSection.update(it)
         }
 
-    }
-}
-
-
-fun <T> Fragment.collectLatestWhenStarted(flow: Flow<T>, block: suspend (value: T) -> Unit) {
-    viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
-        flow.flowWithLifecycle(lifecycle).collectLatest(block)
     }
 }

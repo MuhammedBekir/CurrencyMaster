@@ -5,15 +5,17 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-    <ImageView
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/logo_img"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toTopOf="@+id/edit_texts_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/signup_anim" />
 
     <LinearLayout
         android:id="@+id/edit_texts_layout"
@@ -29,6 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:textSize="13sp"
             android:hint="@string/full_name_dots"
             android:inputType="textPersonName"
             android:textColorHint="@color/blue" />
@@ -39,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:hint="@string/email_dots"
+            android:textSize="13sp"
             android:inputType="textEmailAddress"
             android:textColorHint="@color/blue" />
 
@@ -48,6 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:hint="@string/password_dots"
+            android:textSize="13sp"
             android:inputType="textPassword"
             android:textColorHint="@color/blue" />
 
@@ -55,6 +60,7 @@
             android:id="@+id/confirm_password_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="13sp"
             android:layout_marginTop="5dp"
             android:hint="@string/confirm_password_dots"
             android:inputType="textPassword"

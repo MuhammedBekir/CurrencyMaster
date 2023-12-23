@@ -46,7 +46,7 @@ class MainViewModel @Inject constructor(
 
     init {
         _isUserSignedIn.value = firebaseAuth.currentUser != null
-//        getCurrencies()
+        getCurrencies()
     }
 
 

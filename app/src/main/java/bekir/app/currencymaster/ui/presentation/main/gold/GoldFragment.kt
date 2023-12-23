@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import bekir.app.currencymaster.R
 import bekir.app.currencymaster.databinding.FragmentGoldBinding
 import bekir.app.currencymaster.ui.presentation.main.MainViewModel
-import bekir.app.currencymaster.ui.presentation.main.currency.collectLatestWhenStarted
+import bekir.app.currencymaster.ui.utils.FragmentExtensions.collectLatestWhenStarted
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
 

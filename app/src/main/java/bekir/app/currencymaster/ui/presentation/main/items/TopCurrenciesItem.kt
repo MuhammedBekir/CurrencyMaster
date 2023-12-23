@@ -8,7 +8,8 @@ import com.xwray.groupie.viewbinding.BindableItem
 class TopCurrenciesItem(private val currencyCode: String, private val currencyValue: Double) :
     BindableItem<ItemTopCurrenciesBinding>() {
     override fun bind(viewBinding: ItemTopCurrenciesBinding, position: Int) {
-        viewBinding.currencyTxtItem.text = "$currencyCode/USD"
+        viewBinding.currencyTxtItem.text =
+            viewBinding.root.context.getString(R.string.currency_to_usd, currencyCode)
         viewBinding.currencyValueItem.text = currencyValue.toString()
     }
 

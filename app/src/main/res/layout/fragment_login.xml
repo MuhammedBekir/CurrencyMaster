@@ -5,21 +5,23 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-    <ImageView
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/logo_img"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toTopOf="@+id/edit_texts_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/login_anim" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Login to you account"
+        android:text="@string/login_to_you_account"
         android:textColor="@color/blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

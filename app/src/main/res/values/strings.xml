@@ -28,4 +28,6 @@
     <string name="password_dots">password..</string>
     <string name="full_name_dots">full name..</string>
     <string name="confirm_password_dots">confirm password..</string>
+    <string name="login_to_you_account">Login to you account</string>
+    <string name="currency_to_usd">%1$s/USD</string>
 </resources>

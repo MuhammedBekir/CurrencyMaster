@@ -12,8 +12,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import bekir.app.currencymaster.R
-import bekir.app.currencymaster.data.source.models.AuthState
 import bekir.app.currencymaster.data.source.models.User
+import bekir.app.currencymaster.data.utils.AuthState
 import bekir.app.currencymaster.databinding.FragmentSignupBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -73,7 +73,7 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
     }
 
     private fun showLoading() {
-        Toast.makeText(requireContext(), "loading", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "processing", Toast.LENGTH_SHORT).show()
     }
 
     private fun showSuccess() {
@@ -82,7 +82,6 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
     }
 
     private fun showError(message: String) {
-        // Implement UI for sign-up error
         Toast.makeText(requireContext(), "Error: $message", Toast.LENGTH_SHORT).show()
     }
 

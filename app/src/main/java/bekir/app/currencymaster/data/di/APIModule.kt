@@ -1,6 +1,6 @@
 package bekir.app.currencymaster.data.di
 
-import bekir.app.currencymaster.Config.CURRENCY_BASE_URL
+import bekir.app.currencymaster.data.utils.Config.CURRENCY_BASE_URL
 import bekir.app.currencymaster.data.api.CurrencyAPI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -8,7 +8,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
