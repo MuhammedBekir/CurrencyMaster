@@ -5,7 +5,6 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/top_currencies_bg"
     tools:context=".ui.presentation.main.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -124,7 +123,6 @@
         android:maxWidth="250dp"
         android:id="@+id/navigationView"
         android:layout_width="wrap_content"
-        android:background="@drawable/top_currencies_bg"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"

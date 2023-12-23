@@ -20,4 +20,12 @@
     <string name="usd_us_dollar">USD \nUS Dollar</string>
     <string name="try_turkish_lira">TRY \nTurkish Lira</string>
     <string name="fom_to">%1$s \n%2$s</string>
+    <string name="don_t_have_an_account_signup">Don\'t have an account? Signup</string>
+    <string name="currency_converter">Currency Converter</string>
+    <string name="try_nturkish_lira">TRY \nTurkish Lira</string>
+    <string name="usd_nus_dollar">USD \nUS Dollar</string>
+    <string name="email_dots">email..</string>
+    <string name="password_dots">password..</string>
+    <string name="full_name_dots">full name..</string>
+    <string name="confirm_password_dots">confirm password..</string>
 </resources>

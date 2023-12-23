@@ -29,32 +29,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:hint="@string/full_name"
-            android:inputType="textPersonName" />
+            android:hint="@string/full_name_dots"
+            android:inputType="textPersonName"
+            android:textColorHint="@color/blue" />
 
         <EditText
             android:id="@+id/email_it"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress" />
+            android:hint="@string/email_dots"
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/blue" />
 
         <EditText
             android:id="@+id/password_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:hint="@string/password"
-            android:inputType="textPassword" />
+            android:hint="@string/password_dots"
+            android:inputType="textPassword"
+            android:textColorHint="@color/blue" />
 
         <EditText
             android:id="@+id/confirm_password_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:hint="@string/confirm_password"
-            android:inputType="textPassword" />
+            android:hint="@string/confirm_password_dots"
+            android:inputType="textPassword"
+            android:textColorHint="@color/blue" />
     </LinearLayout>
 
     <TextView
@@ -64,6 +68,7 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="@string/by_creating_an_account_i_accept_privacy_policy_and_legal_terms"
+        android:textColor="@color/blue"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="@+id/edit_texts_layout"
         app:layout_constraintStart_toStartOf="@+id/edit_texts_layout"
@@ -92,7 +97,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
         android:text="@string/create_account"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/create_account_layout"
         app:layout_constraintEnd_toEndOf="@+id/create_account_layout"
@@ -108,6 +113,7 @@
         android:layout_marginBottom="10dp"
         android:gravity="center"
         android:text="@string/already_have_an_account_login"
+        android:textColor="@color/blue"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/create_account_layout"

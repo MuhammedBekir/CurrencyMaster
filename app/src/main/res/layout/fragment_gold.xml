@@ -20,7 +20,7 @@
         android:id="@+id/top_currencies_rc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/blue"
+        android:background="@drawable/top_currencies_bg"
         android:orientation="horizontal"
         android:paddingVertical="45dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

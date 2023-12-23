@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
-    android:background="@drawable/top_currencies_bg"
     android:gravity="bottom"
     android:orientation="vertical"
     android:paddingVertical="34dp">
@@ -38,6 +37,7 @@
         android:animateLayoutChanges="true"
         android:background="@drawable/login_bg"
         android:gravity="center"
+        android:padding="3dp"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
