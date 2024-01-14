@@ -12,6 +12,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
+//هون الviewmodel اللي شغلتو يربط بين ui وبين الrepository
 @HiltViewModel
 class AuthViewModel @Inject constructor(
     private val authRepository: AuthRepository

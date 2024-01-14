@@ -17,11 +17,14 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
+//هاد الكلاس المسؤول عند الdependency injection
 object APIModule {
 
 
     @Singleton
     @Provides
+    // هون عم نعمل dependency injection لل retrofit
+    //الretrofit هي المكتبة اللي عم نستخدمها لنعمل الrequest للموقع اللي بيعطينا اسعار العملات
     fun provideRetrofitApi(
         retrofit: Retrofit
     ): CurrencyAPI = retrofit.create()
@@ -29,6 +32,7 @@ object APIModule {
 
     @Singleton
     @Provides
+    //كمان هون متل اللي فوقا، عم نعمل DI لل retrofit
     fun provideRetrofitCall(
         okHttpClient: OkHttpClient
     ): Retrofit {
@@ -41,6 +45,7 @@ object APIModule {
 
     @Singleton
     @Provides
+    //هون عملنا DI لمكتبة فينا عن طريقها نحط timeout للوقت اللي بيسترغقو الapi ليجيب النتائج
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .connectTimeout(5, TimeUnit.MINUTES)
@@ -48,11 +53,14 @@ object APIModule {
             .writeTimeout(5, TimeUnit.MINUTES)
             .build()
     }
+
     @Singleton
     @Provides
+    //هون منعمل DI للفايربيس FirebaseAuth، منستخدم هي لنعمل حسابات جديدة
     fun provideFirebaseAuth() = FirebaseAuth.getInstance()
 
     @Singleton
     @Provides
+    //هون منعمل DI للفايربيس FirebaseDatabase، كمان منستخدم هي لنعمل حسابات جديدة
     fun provideFirebaseDatabase() = FirebaseDatabase.getInstance().reference
 }

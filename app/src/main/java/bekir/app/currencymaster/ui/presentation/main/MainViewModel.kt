@@ -19,8 +19,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 import com.xwray.groupie.Group
-
-
+/**
+ * ViewModel for the main application screen.
+ */
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val repository: CurrencyRepository,
@@ -35,13 +36,13 @@ class MainViewModel @Inject constructor(
     private val _topCurrenciesStateFLow = MutableStateFlow<List<Group>>(listOf())
     val topCurrenciesStateFLow = _topCurrenciesStateFLow.asStateFlow()
 
-
     private val _goldStateFLow = MutableStateFlow<List<Group>>(listOf())
     val goldStateFLow = _goldStateFLow.asStateFlow()
 
     private val _isUserSignedIn = MutableStateFlow(false)
     val isUserSignedIn = _isUserSignedIn.asStateFlow()
 
+    // Exchange rate between USD and TRY
     var usdToTlExchangeRate: Double = 0.0
 
     init {
@@ -49,7 +50,9 @@ class MainViewModel @Inject constructor(
         getCurrencies()
     }
 
-
+    /**
+     * Retrieves currency information from the repository.
+     */
     private fun getCurrencies() {
         viewModelScope.launch(Dispatchers.IO) {
             val currencyResponse = repository.getCurrencies()
@@ -60,12 +63,12 @@ class MainViewModel @Inject constructor(
             _topCurrenciesStateFLow.emit(topCurrenciesItem)
             _currenciesStateFLow.emit(currencyItems)
             _goldStateFLow.emit(goldItems)
-
         }
-
     }
 
-    //currencies items
+    /**
+     * Prepares currency items for display.
+     */
     private fun prepareCurrencyItems(currencyResponse: CurrencyResponse): List<MainScreenItem> {
         return currencyResponse.conversionRates.javaClass.declaredFields.map { field ->
             field.isAccessible = true
@@ -78,8 +81,9 @@ class MainViewModel @Inject constructor(
         }
     }
 
-
-    //top currencies items
+    /**
+     * Prepares top currencies items for display.
+     */
     private fun prepareTopCurrencies(currencyResponse: CurrencyResponse): List<TopCurrenciesItem> {
         val currencyRates = currencyResponse.conversionRates
 
@@ -91,7 +95,9 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    //gold items
+    /**
+     * Prepares gold items for display.
+     */
     private fun prepareGoldItems(currencyResponse: CurrencyResponse): List<MainScreenItem> {
         val currencyRates = currencyResponse.conversionRates
 
@@ -116,16 +122,18 @@ class MainViewModel @Inject constructor(
         }
     }
 
-
-
+    /**
+     * Changes the current screen to the specified one.
+     */
     fun changeScreen(screen: Screens) {
         if (_currentScreen.value != screen)
             _currentScreen.value = screen
     }
-
-
 }
 
+/**
+ * Sealed class representing different screens in the application.
+ */
 sealed class Screens(val fragment: Fragment) {
     data object CurrencyFragment : Screens(CurrencyFragment())
     data object GoldFragment : Screens(GoldFragment())

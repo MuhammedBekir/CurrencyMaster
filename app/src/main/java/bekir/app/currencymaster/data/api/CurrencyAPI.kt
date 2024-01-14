@@ -6,6 +6,7 @@ import retrofit2.http.GET
 
 interface CurrencyAPI {
 
+    //يسترجع أحدث أسعار صرف العملات للدولار الأمريكي
     @GET("latest/USD")
     suspend fun getCurrencies(
     ): Response<CurrencyResponse>

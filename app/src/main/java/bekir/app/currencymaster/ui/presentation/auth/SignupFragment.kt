@@ -20,11 +20,13 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-
 class SignupFragment : Fragment(R.layout.fragment_signup) {
     private var _binding: FragmentSignupBinding? = null
     private val binding get() = _binding!!
     private val viewModel: AuthViewModel by viewModels()
+
+
+     // يقوم بإعداد وإرجاع واجهة المستخدم للشاشة.
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,6 +56,7 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
             }
         }
         viewLifecycleOwner.lifecycleScope.launch {
+            //هون منشوف شو النتائج بعد ما كبست على تسجيل الدخول، اذا نجح تسجيل الدخول او لا
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.authState.collectLatest { state ->
                     when (state) {
@@ -65,13 +68,12 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
                 }
             }
         }
-
-
         binding.alreadyHaveAnAccountTxt.setOnClickListener {
             findNavController().navigate(SignupFragmentDirections.actionSignupFragmentToLoginFragment())
         }
     }
 
+    //هي الدالة بتورجي رسالة انو الحساب عم ينعمل
     private fun showLoading() {
         Toast.makeText(requireContext(), "processing", Toast.LENGTH_SHORT).show()
     }

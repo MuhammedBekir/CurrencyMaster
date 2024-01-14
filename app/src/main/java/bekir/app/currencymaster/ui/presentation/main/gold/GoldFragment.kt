@@ -14,23 +14,37 @@ import bekir.app.currencymaster.ui.utils.FragmentExtensions.collectLatestWhenSta
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
 
+/**
+ * Fragment to display gold-related information.
+ */
 class GoldFragment : Fragment(R.layout.fragment_gold) {
     private var _binding: FragmentGoldBinding? = null
     private val binding get() = _binding!!
     private val viewModel: MainViewModel by activityViewModels()
+
+    // Adapter for the top gold-related information
     private val topScreenAdapter by lazy {
         GroupieAdapter()
     }
+
+    // Section for the top gold-related information
     private val topScreenSection by lazy {
         Section()
     }
+
+    // Adapter for the gold values list
     private val goldAdapter by lazy {
         GroupieAdapter()
     }
+
+    // Section for the gold values
     private val goldSection by lazy {
         Section()
     }
 
+    /**
+     * Sets up and returns the user interface for the screen.
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,17 +54,26 @@ class GoldFragment : Fragment(R.layout.fragment_gold) {
         return binding.root
     }
 
+    /**
+     * Called after the interface is created, managing interactions.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupTopCurrenciesRecyclerView()
         setupGoldValuesRecyclerView()
     }
 
+    /**
+     * Cleans up resources when the view is destroyed to avoid memory leaks.
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
+    /**
+     * Sets up the gold values RecyclerView.
+     */
     private fun setupGoldValuesRecyclerView() {
         val layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -60,9 +83,11 @@ class GoldFragment : Fragment(R.layout.fragment_gold) {
         collectLatestWhenStarted(viewModel.goldStateFLow) {
             goldAdapter.update(it)
         }
-
     }
 
+    /**
+     * Sets up the top gold-related information RecyclerView.
+     */
     private fun setupTopCurrenciesRecyclerView() {
         val layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
@@ -72,6 +97,5 @@ class GoldFragment : Fragment(R.layout.fragment_gold) {
         collectLatestWhenStarted(viewModel.topCurrenciesStateFLow) {
             topScreenSection.update(it)
         }
-
     }
 }

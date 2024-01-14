@@ -18,6 +18,7 @@ import bekir.app.currencymaster.ui.presentation.main.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
+// Fragment to display the currency converter screen.
 class ConverterFragment : Fragment(R.layout.fragment_converter) {
     private var _binding: FragmentConverterBinding? = null
     private val binding get() = _binding!!
@@ -27,6 +28,7 @@ class ConverterFragment : Fragment(R.layout.fragment_converter) {
     private val viewModel: MainViewModel by activityViewModels()
 
     var exchangeRateBetweenTRYandUSD: Double = 0.0
+    // Sets up and returns the user interface for the screen.
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -45,6 +47,7 @@ class ConverterFragment : Fragment(R.layout.fragment_converter) {
 
     }
 
+    //Handles interactions with the exchange rate input fields.
     private fun handleExchangeRatesEditTexts() {
         binding.leftEditTxt.apply {
             setOnClickListener {
@@ -85,7 +88,6 @@ class ConverterFragment : Fragment(R.layout.fragment_converter) {
                 }
             }
         }
-
         binding.rightEditTxt.apply {
             setOnClickListener {
                 binding.rightPen.visibility = View.VISIBLE
@@ -126,8 +128,7 @@ class ConverterFragment : Fragment(R.layout.fragment_converter) {
             }
         }
     }
-
-
+    //Handles the click event for the currency switch button.
     private fun handleSwitchCurrenciesClick() {
         binding.switchCurrencies.setOnClickListener {
             if (isTryDefault) {
@@ -146,7 +147,7 @@ class ConverterFragment : Fragment(R.layout.fragment_converter) {
         super.onDestroyView()
         _binding = null
     }
-
+    // Hides the keyboard when called from the specified view.
     private fun Context.hideKeyboard(view: View) {
         val inputMethodManager =
             getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager

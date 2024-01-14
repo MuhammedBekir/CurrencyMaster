@@ -7,10 +7,12 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
+//هون منعمل العمليات اللي بتصير عن طريق الفايربيس
 class AuthRepositoryImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth
 ) : AuthRepository {
 
+    //هون عملية انشاء حسابات
     override suspend fun signUp(user: User): AuthState {
         return try {
             firebaseAuth.createUserWithEmailAndPassword(user.email, user.password).await()
@@ -20,6 +22,7 @@ class AuthRepositoryImpl @Inject constructor(
         }
     }
 
+    //هون عملية تسجيل الدخول
     override suspend fun login(email: String, password: String): AuthState {
         return try {
             firebaseAuth.signInWithEmailAndPassword(email, password).await()

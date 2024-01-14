@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun observeValues() {
+        //هون منعمل العمليات المسؤولة هن تغيير الشاشة لما نكبس ع وحدة من الخيارات اللي تحت الشاشة
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.currentScreen.collectLatest {
@@ -58,6 +59,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
             }
         }
+        //هون منشوف اذا المستخدم عامل تسجيل دخون فما منظهرلو زر تسجيل الدخول بالقائمة عاليسار
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.isUserSignedIn.collectLatest { isSignedIn ->
@@ -83,6 +85,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun initClickListeners() {
+        //هون منحدد شو يصير لما نكبس على واحد من العناصر الموجودين بالbar اللي تحت
         binding.drawerImg.setOnClickListener {
             if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                 drawerLayout.closeDrawer(GravityCompat.START)
@@ -101,6 +104,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+    // هون عم نعمل  initialize لل drawer (اللي هو القائمة اللي بتظهر من عاليسار)
     private fun initDrawerAndActionBar() {
         drawerLayout = binding.drawerLayout
         toggle = ActionBarDrawerToggle(
@@ -117,6 +121,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navigationView.setNavigationItemSelectedListener(this)
     }
 
+    //هاد بغير لون العنصر اللي منكبس عليه من الbar اللي تحت
     private fun changeButtonsColor(screen: Screens) {
         val currencyColor = ContextCompat.getColor(
             this,
@@ -186,6 +191,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return super.onOptionsItemSelected(item)
     }
 
+    //منتحكم شو بصير لما ينكبس زر الرجوع
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
@@ -194,6 +200,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+    //هي دالة منستدعيها لما بدنا نطالع رسالة للمستخدم
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }

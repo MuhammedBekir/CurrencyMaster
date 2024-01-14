@@ -21,6 +21,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
+//هون الكلاس تبع تسجيل الدخول
 class LoginFragment : Fragment(R.layout.fragment_login) {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
@@ -58,11 +59,13 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
     }
 
+    //هي الدالة بتورجي رسالة تسجيل الدخول
     private fun showLoading() {
         Toast.makeText(requireContext(), "logging in", Toast.LENGTH_SHORT).show()
 
     }
 
+    //هي الدالة منستدعيها بعد ما ينعمل تسجيل دخول
     private fun showSuccess() {
         val intent = Intent(requireActivity(), MainActivity::class.java)
         requireActivity().startActivity(intent)

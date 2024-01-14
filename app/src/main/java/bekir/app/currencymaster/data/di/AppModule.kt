@@ -15,6 +15,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 abstract class AppModule {
 
+    //هون منعمل DI للكلاس اللي هو AuthRepository
     @Binds
     @Singleton
     abstract fun bindAuthRepository(authRepositoryImpl: AuthRepositoryImpl): AuthRepository
@@ -22,5 +23,7 @@ abstract class AppModule {
 
     @Binds
     @Singleton
+    //هون منعمل DI للكلاس اللي هو CurrencyRepository
+
     abstract fun bindCurrencyRepository(currencyRepositoryImpl: CurrencyRepositoryImpl): CurrencyRepository
 }

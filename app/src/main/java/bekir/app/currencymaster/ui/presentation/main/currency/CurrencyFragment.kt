@@ -19,21 +19,27 @@ class CurrencyFragment : Fragment(R.layout.fragment_currency) {
     private val binding get() = _binding!!
     private val viewModel: MainViewModel by activityViewModels()
 
-
+    // Adapter for the main currency values list
     private val topScreenAdapter by lazy {
         GroupieAdapter()
     }
+
+    // Adapter for the top currencies list
     private val adapter by lazy {
         GroupieAdapter()
     }
+
+    // Section for the main currency values
     private val mainScreenSection by lazy {
         Section()
     }
 
+    // Section for the top currencies
     private val topScreenSection by lazy {
         Section()
     }
 
+    //Sets up and returns the user interface for the screen.
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,17 +49,20 @@ class CurrencyFragment : Fragment(R.layout.fragment_currency) {
         return binding.root
     }
 
+    //Called after the interface is created, managing interactions.
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupMainScreenRecyclerView()
         setupTopCurrenciesRecyclerView()
     }
 
+    //Cleans up resources when the view is destroyed to avoid memory leaks.
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
+    // Sets up the main currency values RecyclerView.
     private fun setupMainScreenRecyclerView() {
         val layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -66,8 +75,11 @@ class CurrencyFragment : Fragment(R.layout.fragment_currency) {
 
     }
 
+    // Sets up the top currencies RecyclerView.
+
     private fun setupTopCurrenciesRecyclerView() {
-        val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        val layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.topCurrenciesRc.layoutManager = layoutManager
         binding.topCurrenciesRc.adapter = topScreenAdapter
         topScreenAdapter.updateAsync(listOf(topScreenSection))
